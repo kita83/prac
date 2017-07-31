@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+</head>
+<body>
+<h1>Todo List</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {% if task_list %}
+        <ul style="list-style:none;">
+        {% for task in task_list %}
+            <li><input type="checkbox" name="check">  {{ task.task }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tasks are available.</p>
+    {% endif %}
+    <input type="submit" value="完了">
+</form>
+</body>
+</html>
