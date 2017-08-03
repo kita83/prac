@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>h1 text</h1>
+    <!--{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}-->
+    {% if task_list %}
+        <ul style="list-style:none;">
+        {% for item in item_list %}
+            <li><input type="checkbox" name="check">  {{ task.task }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tasks are available.</p>
+    {% endif %}
+</body>
+</html>

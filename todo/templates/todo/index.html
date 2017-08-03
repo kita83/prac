@@ -9,15 +9,17 @@
 <form action="" method="post">
     {% csrf_token %}
     {% if task_list %}
-        <ul style="list-style:none;">
-        {% for task in task_list %}
-            <li><input type="checkbox" name="check">  {{ task.task }}</li>
+        <dl style="list-style:none;">
+        {% for row in task_list %}
+            <dt><input type="checkbox" name="check">  {{ row.task }}</dt>
+            <dd>{{ row.deadline }}</dd>
+            <dd>{{ row.priority }}</dd>
         {% endfor %}
-        </ul>
+        </dl>
     {% else %}
         <p>No tasks are available.</p>
     {% endif %}
-    <input type="submit" value="完了">
+    <input type="submit" value="削除">
 </form>
 </body>
 </html>
