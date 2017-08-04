@@ -11,7 +11,7 @@
     {% if task_list %}
         <dl style="list-style:none;">
         {% for row in task_list %}
-            <dt><input type="checkbox" name="check">  {{ row.task }}</dt>
+            <dt><input type="checkbox" name="check" value="{{ row.id }}">  {{ row.task }}</dt>
             <dd>{{ row.deadline }}</dd>
             <dd>{{ row.priority }}</dd>
         {% endfor %}

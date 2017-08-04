@@ -4,15 +4,13 @@
 from django.shortcuts import get_object_or_404, render
 from todo.models import Task
 from django.http import HttpResponse, HttpResponseRedirect
-from django.urls import reverse
 
 
 def index(request):
-    postdata = request.POST
-    if request.method == 'POST' and len(postdata) > 0:
+    postdata = request.POST.getlist('check')
+    if request.method == 'POST' and postdata:
         for data in postdata:
-            d = Task.objects.filter(id=data)
-            d.delete()
+            Task.objects.filter(id=data).delete()
     task_list = Task.objects.all()
     context = {'task_list': task_list}
     return render(request, 'todo/index.html', context)
