@@ -4,9 +4,14 @@
 from django.shortcuts import get_object_or_404, render
 from todo.models import Task
 from django.http import HttpResponse, HttpResponseRedirect
+from datetime import datetime
 
 
 def index(request):
+    if request.POST.get('addTask'):
+        adddata = request.POST.get('addTask')
+        b = Task(task=adddata, cre_date=datetime.now(), deadline=datetime.now(), priority='0')
+        b.save()
     postdata = request.POST.getlist('check')
     if request.method == 'POST' and postdata:
         for data in postdata:

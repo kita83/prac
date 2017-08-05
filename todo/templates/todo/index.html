@@ -1,12 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Todo</title>
-</head>
-<body>
+{% extends "../base.html %}
+{% block title %}Task List{% endblock title %}
+{% block extrahead %}
+<style>
+table {
+  margin-top: 8px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
 <h1>Todo List</h1>
 <form action="" method="post">
+    <dl>タスクを追加</dl>
+    <dt><input type="text" size="30" maxlength="50" name="addTask"><button type="submit" name="action" value="add">追加</button></dt>
     {% csrf_token %}
     {% if task_list %}
         <dl style="list-style:none;">
@@ -19,7 +25,6 @@
     {% else %}
         <p>No tasks are available.</p>
     {% endif %}
-    <input type="submit" value="削除">
+    <button type="submit" name="action" value="delete">削除</button>
 </form>
-</body>
-</html>
+{% endblock content %}
