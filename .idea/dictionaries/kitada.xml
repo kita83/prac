@@ -1,6 +1,9 @@
 <component name="ProjectDictionaryState">
   <dictionary name="kitada">
     <words>
+      <w>csrf</w>
+      <w>endblock</w>
+      <w>extrahead</w>
       <w>postdata</w>
     </words>
   </dictionary>

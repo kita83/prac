@@ -11,15 +11,15 @@ table {
 {% block content %}
 <h1>Todo List</h1>
 <form action="" method="post">
-    <dl>タスクを追加</dl>
-    <dt><input type="text" size="30" maxlength="50" name="addTask"><button type="submit" name="action" value="add">追加</button></dt>
+    <input type="text" size="30" maxlength="50" name="addTask" placeholder="タスクを追加">
+    <button type="submit" name="action" value="add">追加</button>
     {% csrf_token %}
     {% if task_list %}
         <dl style="list-style:none;">
         {% for row in task_list %}
-            <dt><input type="checkbox" name="check" value="{{ row.id }}">  {{ row.task }}</dt>
+            <dt><a href="detail.hmtl"><input type="checkbox" name="check" value="{{ row.id }}">  {{ row.task }}</a></dt>
             <dd>{{ row.deadline }}</dd>
-            <dd>{{ row.priority }}</dd>
+            <dd>Priority: {{ row.priority }}</dd>
         {% endfor %}
         </dl>
     {% else %}

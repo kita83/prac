@@ -1,20 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>h1 text</h1>
+{% extends "../base.html %}
+{% block title %}Task List{% endblock title %}
+{% block extrahead %}
+<style>
+table {
+  margin-top: 8px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+    {% if task_detail %}
+    <h1>{{ task.task }}</h1>
     <!--{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}-->
-    {% if task_list %}
         <ul style="list-style:none;">
-        {% for item in item_list %}
-            <li><input type="checkbox" name="check">  {{ task.task }}</li>
-        {% endfor %}
+            <li><p>{{ task.task }}</p></li>
+            <li><p>{{ task.cre_date }}</p></li>
+            <li><p>{{ task.deadline }}</p></li>
+            <li><p>{{ task.priority }}</p></li>
         </ul>
     {% else %}
         <p>No tasks are available.</p>
     {% endif %}
-</body>
-</html>
+{% endblock content %}

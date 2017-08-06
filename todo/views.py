@@ -3,15 +3,15 @@
 
 from django.shortcuts import get_object_or_404, render
 from todo.models import Task
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, Http404
 from datetime import datetime
 
 
 def index(request):
     if request.POST.get('addTask'):
-        adddata = request.POST.get('addTask')
-        b = Task(task=adddata, cre_date=datetime.now(), deadline=datetime.now(), priority='0')
-        b.save()
+        data = request.POST.get('addTask')
+        d = Task(task=data, cre_date=datetime.now(), deadline=datetime.now(), priority='0')
+        d.save()
     postdata = request.POST.getlist('check')
     if request.method == 'POST' and postdata:
         for data in postdata:
@@ -25,11 +25,6 @@ def archive(request):
     return HttpResponse("You're looking archive page.")
 
 
-def detail(request, task_id):
-    item_list = []
-    if request.method == 'POST':
-        item_list = request.POST.getlist('check')
-    context = {'item_list': item_list}
-    # task = get_object_or_404(Task, pk=task_id)
-
-    return render(request, 'todo/detail.html', context)
+def detail(request):
+    # task_detail = get_object_or_404(Task, id=row_id)
+    return render(request, 'todo/detail.html', {'task_detail', Task.objects.all()})
