@@ -9,16 +9,18 @@ table {
 {% endblock %}
 
 {% block content %}
-    {% if task_detail %}
-    <h1>{{ task.task }}</h1>
-    <!--{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}-->
+    {% if task_list %}
+        {% for t in task_list %}
+    <h3>{{ t.item }}</h3>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
         <ul style="list-style:none;">
-            <li><p>{{ task.task }}</p></li>
-            <li><p>{{ task.cre_date }}</p></li>
-            <li><p>{{ task.deadline }}</p></li>
-            <li><p>{{ task.priority }}</p></li>
+            <li><p>期限：{{ t.deadline }}</p></li>
+            <li><p>重要度：{{ t.priority }}</p></li>
+            <li><p>作成日：{{ t.cre_date }}</p></li>
         </ul>
+        {% endfor %}
     {% else %}
         <p>No tasks are available.</p>
     {% endif %}
+    <a href="{% url 'index' %}">一覧画面へ戻る</a>
 {% endblock content %}

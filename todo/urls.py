@@ -8,6 +8,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^detail/$', views.detail, name='detail'),
+    url(r'^(?P<pk>[0-9]+)/$', views.detail, name='detail'),
     url(r'^archive/$', views.archive, name='archive'),
+    url(r'^form$', views.form_test),
 ]

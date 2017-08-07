@@ -16,10 +16,11 @@ table {
     {% csrf_token %}
     {% if task_list %}
         <dl style="list-style:none;">
-        {% for row in task_list %}
-            <dt><a href="detail.hmtl"><input type="checkbox" name="check" value="{{ row.id }}">  {{ row.task }}</a></dt>
-            <dd>{{ row.deadline }}</dd>
-            <dd>Priority: {{ row.priority }}</dd>
+        {% for task in task_list %}
+            <dt><input type="checkbox" name="check" value="{{ task.id }}">
+                <a href="{% url 'detail' task.pk %}">  {{ task.item }}</a></dt>
+            <dd>{{ task.deadline }}</dd>
+            <dd>Priority: {{ task.priority }}</dd>
         {% endfor %}
         </dl>
     {% else %}

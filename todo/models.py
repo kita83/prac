@@ -8,7 +8,7 @@ from django.utils import timezone
 
 
 class Task(models.Model):
-    task = models.CharField(max_length=200)
+    item = models.CharField(max_length=200)
     cre_date = models.DateTimeField('date created', auto_now_add=True)
     deadline = models.DateTimeField('deadline_date', blank=True, null=True)
     priority = models.CharField(default=0, max_length=1)
@@ -20,4 +20,4 @@ class Task(models.Model):
             return None
 
     def __str__(self):
-        return self.task
+        return self.item

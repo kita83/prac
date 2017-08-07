@@ -3,6 +3,7 @@
     <words>
       <w>csrf</w>
       <w>endblock</w>
+      <w>endfor</w>
       <w>extrahead</w>
       <w>postdata</w>
     </words>
